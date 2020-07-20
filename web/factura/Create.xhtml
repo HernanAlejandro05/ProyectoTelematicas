@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFacturaLabel_numerofactura}" for="numerofactura" />
+                    <h:inputText id="numerofactura" value="#{facturaController.selected.numerofactura}" title="#{bundle.CreateFacturaTitle_numerofactura}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_numerofactura}"/>
+                    <h:outputLabel value="#{bundle.CreateFacturaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{facturaController.selected.fecha}" title="#{bundle.CreateFacturaTitle_fecha}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFacturaLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{facturaController.selected.valor}" title="#{bundle.CreateFacturaTitle_valor}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_valor}"/>
+                    <h:outputLabel value="#{bundle.CreateFacturaLabel_proveedorRuc}" for="proveedorRuc" />
+                    <h:selectOneMenu id="proveedorRuc" value="#{facturaController.selected.proveedorRuc}" title="#{bundle.CreateFacturaTitle_proveedorRuc}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_proveedorRuc}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFacturaLabel_usuarioCedula}" for="usuarioCedula" />
+                    <h:selectOneMenu id="usuarioCedula" value="#{facturaController.selected.usuarioCedula}" title="#{bundle.CreateFacturaTitle_usuarioCedula}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_usuarioCedula}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{facturaController.create}" value="#{bundle.CreateFacturaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{facturaController.prepareList}" value="#{bundle.CreateFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFacturaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

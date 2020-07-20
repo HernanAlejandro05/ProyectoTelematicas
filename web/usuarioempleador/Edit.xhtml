@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioempleadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuarioempleadorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{usuarioempleadorController.selected.id}" title="#{bundle.EditUsuarioempleadorTitle_id}" required="true" requiredMessage="#{bundle.EditUsuarioempleadorRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioempleadorLabel_totalingresos}" for="totalingresos" />
+                    <h:inputText id="totalingresos" value="#{usuarioempleadorController.selected.totalingresos}" title="#{bundle.EditUsuarioempleadorTitle_totalingresos}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioempleadorLabel_anio}" for="anio" />
+                    <h:inputText id="anio" value="#{usuarioempleadorController.selected.anio}" title="#{bundle.EditUsuarioempleadorTitle_anio}" required="true" requiredMessage="#{bundle.EditUsuarioempleadorRequiredMessage_anio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditUsuarioempleadorLabel_empleadorRuc}" for="empleadorRuc" />
+                    <h:selectOneMenu id="empleadorRuc" value="#{usuarioempleadorController.selected.empleadorRuc}" title="#{bundle.EditUsuarioempleadorTitle_empleadorRuc}" required="true" requiredMessage="#{bundle.EditUsuarioempleadorRequiredMessage_empleadorRuc}">
+                        <f:selectItems value="#{empleadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUsuarioempleadorLabel_usuarioCedula}" for="usuarioCedula" />
+                    <h:selectOneMenu id="usuarioCedula" value="#{usuarioempleadorController.selected.usuarioCedula}" title="#{bundle.EditUsuarioempleadorTitle_usuarioCedula}" required="true" requiredMessage="#{bundle.EditUsuarioempleadorRequiredMessage_usuarioCedula}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{usuarioempleadorController.update}" value="#{bundle.EditUsuarioempleadorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuarioempleadorViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioempleadorController.prepareList}" value="#{bundle.EditUsuarioempleadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuarioempleadorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

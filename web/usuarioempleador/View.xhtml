@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuarioempleadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsuarioempleadorLabel_id}"/>
+                    <h:outputText value="#{usuarioempleadorController.selected.id}" title="#{bundle.ViewUsuarioempleadorTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioempleadorLabel_totalingresos}"/>
+                    <h:outputText value="#{usuarioempleadorController.selected.totalingresos}" title="#{bundle.ViewUsuarioempleadorTitle_totalingresos}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioempleadorLabel_anio}"/>
+                    <h:outputText value="#{usuarioempleadorController.selected.anio}" title="#{bundle.ViewUsuarioempleadorTitle_anio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUsuarioempleadorLabel_empleadorRuc}"/>
+                    <h:outputText value="#{usuarioempleadorController.selected.empleadorRuc}" title="#{bundle.ViewUsuarioempleadorTitle_empleadorRuc}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioempleadorLabel_usuarioCedula}"/>
+                    <h:outputText value="#{usuarioempleadorController.selected.usuarioCedula}" title="#{bundle.ViewUsuarioempleadorTitle_usuarioCedula}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioempleadorController.destroyAndView}" value="#{bundle.ViewUsuarioempleadorDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsuarioempleadorEditLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioempleadorController.prepareCreate}" value="#{bundle.ViewUsuarioempleadorCreateLink}" />
+                <br />
+                <h:commandLink action="#{usuarioempleadorController.prepareList}" value="#{bundle.ViewUsuarioempleadorShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsuarioempleadorIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDeducibleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_codigo}"/>
+                    <h:outputText value="#{deducibleController.selected.codigo}" title="#{bundle.ViewDeducibleTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_descripcion}"/>
+                    <h:outputText value="#{deducibleController.selected.descripcion}" title="#{bundle.ViewDeducibleTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_cantidad}"/>
+                    <h:outputText value="#{deducibleController.selected.cantidad}" title="#{bundle.ViewDeducibleTitle_cantidad}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_valordeduciblevivienda}"/>
+                    <h:outputText value="#{deducibleController.selected.valordeduciblevivienda}" title="#{bundle.ViewDeducibleTitle_valordeduciblevivienda}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_valordeducibleeducacion}"/>
+                    <h:outputText value="#{deducibleController.selected.valordeducibleeducacion}" title="#{bundle.ViewDeducibleTitle_valordeducibleeducacion}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_valordeduciblesalud}"/>
+                    <h:outputText value="#{deducibleController.selected.valordeduciblesalud}" title="#{bundle.ViewDeducibleTitle_valordeduciblesalud}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_valordeduciblevestimenta}"/>
+                    <h:outputText value="#{deducibleController.selected.valordeduciblevestimenta}" title="#{bundle.ViewDeducibleTitle_valordeduciblevestimenta}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_valordeduciblealimentacion}"/>
+                    <h:outputText value="#{deducibleController.selected.valordeduciblealimentacion}" title="#{bundle.ViewDeducibleTitle_valordeduciblealimentacion}"/>
+                    <h:outputText value="#{bundle.ViewDeducibleLabel_facturaNumerofactura}"/>
+                    <h:outputText value="#{deducibleController.selected.facturaNumerofactura}" title="#{bundle.ViewDeducibleTitle_facturaNumerofactura}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{deducibleController.destroyAndView}" value="#{bundle.ViewDeducibleDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDeducibleEditLink}"/>
+                <br />
+                <h:commandLink action="#{deducibleController.prepareCreate}" value="#{bundle.ViewDeducibleCreateLink}" />
+                <br />
+                <h:commandLink action="#{deducibleController.prepareList}" value="#{bundle.ViewDeducibleShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDeducibleIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

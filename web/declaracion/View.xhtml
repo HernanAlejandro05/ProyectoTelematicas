@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDeclaracionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_codigo}"/>
+                    <h:outputText value="#{declaracionController.selected.codigo}" title="#{bundle.ViewDeclaracionTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_anio}"/>
+                    <h:outputText value="#{declaracionController.selected.anio}" title="#{bundle.ViewDeclaracionTitle_anio}"/>
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_fraccionbasica}"/>
+                    <h:outputText value="#{declaracionController.selected.fraccionbasica}" title="#{bundle.ViewDeclaracionTitle_fraccionbasica}"/>
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_exceso}"/>
+                    <h:outputText value="#{declaracionController.selected.exceso}" title="#{bundle.ViewDeclaracionTitle_exceso}"/>
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_impuestofb}"/>
+                    <h:outputText value="#{declaracionController.selected.impuestofb}" title="#{bundle.ViewDeclaracionTitle_impuestofb}"/>
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_impuestofe}"/>
+                    <h:outputText value="#{declaracionController.selected.impuestofe}" title="#{bundle.ViewDeclaracionTitle_impuestofe}"/>
+                    <h:outputText value="#{bundle.ViewDeclaracionLabel_usuarioCedula}"/>
+                    <h:outputText value="#{declaracionController.selected.usuarioCedula}" title="#{bundle.ViewDeclaracionTitle_usuarioCedula}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{declaracionController.destroyAndView}" value="#{bundle.ViewDeclaracionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDeclaracionEditLink}"/>
+                <br />
+                <h:commandLink action="#{declaracionController.prepareCreate}" value="#{bundle.ViewDeclaracionCreateLink}" />
+                <br />
+                <h:commandLink action="#{declaracionController.prepareList}" value="#{bundle.ViewDeclaracionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDeclaracionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

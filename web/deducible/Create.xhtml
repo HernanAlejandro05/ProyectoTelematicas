@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDeducibleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{deducibleController.selected.codigo}" title="#{bundle.CreateDeducibleTitle_codigo}" required="true" requiredMessage="#{bundle.CreateDeducibleRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{deducibleController.selected.descripcion}" title="#{bundle.CreateDeducibleTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateDeducibleRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{deducibleController.selected.cantidad}" title="#{bundle.CreateDeducibleTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDeducibleRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_valordeduciblevivienda}" for="valordeduciblevivienda" />
+                    <h:inputText id="valordeduciblevivienda" value="#{deducibleController.selected.valordeduciblevivienda}" title="#{bundle.CreateDeducibleTitle_valordeduciblevivienda}" />
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_valordeducibleeducacion}" for="valordeducibleeducacion" />
+                    <h:inputText id="valordeducibleeducacion" value="#{deducibleController.selected.valordeducibleeducacion}" title="#{bundle.CreateDeducibleTitle_valordeducibleeducacion}" />
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_valordeduciblesalud}" for="valordeduciblesalud" />
+                    <h:inputText id="valordeduciblesalud" value="#{deducibleController.selected.valordeduciblesalud}" title="#{bundle.CreateDeducibleTitle_valordeduciblesalud}" />
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_valordeduciblevestimenta}" for="valordeduciblevestimenta" />
+                    <h:inputText id="valordeduciblevestimenta" value="#{deducibleController.selected.valordeduciblevestimenta}" title="#{bundle.CreateDeducibleTitle_valordeduciblevestimenta}" />
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_valordeduciblealimentacion}" for="valordeduciblealimentacion" />
+                    <h:inputText id="valordeduciblealimentacion" value="#{deducibleController.selected.valordeduciblealimentacion}" title="#{bundle.CreateDeducibleTitle_valordeduciblealimentacion}" />
+                    <h:outputLabel value="#{bundle.CreateDeducibleLabel_facturaNumerofactura}" for="facturaNumerofactura" />
+                    <h:selectOneMenu id="facturaNumerofactura" value="#{deducibleController.selected.facturaNumerofactura}" title="#{bundle.CreateDeducibleTitle_facturaNumerofactura}" required="true" requiredMessage="#{bundle.CreateDeducibleRequiredMessage_facturaNumerofactura}">
+                        <f:selectItems value="#{facturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{deducibleController.create}" value="#{bundle.CreateDeducibleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{deducibleController.prepareList}" value="#{bundle.CreateDeducibleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDeducibleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

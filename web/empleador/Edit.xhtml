@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmpleadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmpleadorLabel_ruc}" for="ruc" />
+                    <h:inputText id="ruc" value="#{empleadorController.selected.ruc}" title="#{bundle.EditEmpleadorTitle_ruc}" required="true" requiredMessage="#{bundle.EditEmpleadorRequiredMessage_ruc}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{empleadorController.selected.nombre}" title="#{bundle.EditEmpleadorTitle_nombre}" required="true" requiredMessage="#{bundle.EditEmpleadorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadorLabel_razon}" for="razon" />
+                    <h:inputText id="razon" value="#{empleadorController.selected.razon}" title="#{bundle.EditEmpleadorTitle_razon}" required="true" requiredMessage="#{bundle.EditEmpleadorRequiredMessage_razon}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{empleadorController.update}" value="#{bundle.EditEmpleadorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmpleadorViewLink}"/>
+                <br />
+                <h:commandLink action="#{empleadorController.prepareList}" value="#{bundle.EditEmpleadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmpleadorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

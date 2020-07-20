@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDeclaracionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{declaracionController.selected.codigo}" title="#{bundle.EditDeclaracionTitle_codigo}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_anio}" for="anio" />
+                    <h:inputText id="anio" value="#{declaracionController.selected.anio}" title="#{bundle.EditDeclaracionTitle_anio}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_anio}"/>
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_fraccionbasica}" for="fraccionbasica" />
+                    <h:inputText id="fraccionbasica" value="#{declaracionController.selected.fraccionbasica}" title="#{bundle.EditDeclaracionTitle_fraccionbasica}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_fraccionbasica}"/>
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_exceso}" for="exceso" />
+                    <h:inputText id="exceso" value="#{declaracionController.selected.exceso}" title="#{bundle.EditDeclaracionTitle_exceso}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_exceso}"/>
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_impuestofb}" for="impuestofb" />
+                    <h:inputText id="impuestofb" value="#{declaracionController.selected.impuestofb}" title="#{bundle.EditDeclaracionTitle_impuestofb}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_impuestofb}"/>
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_impuestofe}" for="impuestofe" />
+                    <h:inputText id="impuestofe" value="#{declaracionController.selected.impuestofe}" title="#{bundle.EditDeclaracionTitle_impuestofe}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_impuestofe}"/>
+                    <h:outputLabel value="#{bundle.EditDeclaracionLabel_usuarioCedula}" for="usuarioCedula" />
+                    <h:selectOneMenu id="usuarioCedula" value="#{declaracionController.selected.usuarioCedula}" title="#{bundle.EditDeclaracionTitle_usuarioCedula}" required="true" requiredMessage="#{bundle.EditDeclaracionRequiredMessage_usuarioCedula}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{declaracionController.update}" value="#{bundle.EditDeclaracionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDeclaracionViewLink}"/>
+                <br />
+                <h:commandLink action="#{declaracionController.prepareList}" value="#{bundle.EditDeclaracionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDeclaracionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
